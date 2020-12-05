@@ -36,6 +36,15 @@ namespace SpaceInvaders2020
         private void TimerMove_Tick(object sender, EventArgs e)
         {
             this.Top -= step;
+            DisposeIfNotVisible();
+        }
+
+        private void DisposeIfNotVisible()
+        {
+            if(this.Top + this.Height < 0)
+            {
+                this.Dispose();
+            }
         }
     }
 }
