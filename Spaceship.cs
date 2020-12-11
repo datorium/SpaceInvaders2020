@@ -10,9 +10,12 @@ namespace SpaceInvaders2020
 {
     class Spaceship : PictureBox
     {
-        public Spaceship()
+        Form game = null;
+
+        public Spaceship(Form form)
         {
             InitializeSpaceship();
+            game = form;
         }
 
         private void InitializeSpaceship()
@@ -20,6 +23,14 @@ namespace SpaceInvaders2020
             this.BackColor = Color.Orange;
             this.Width = 20;
             this.Height = 60;
+        }
+
+        public void Fire()
+        {
+            Bullet bullet = new Bullet();
+            bullet.Left = this.Left + this.Width / 2;
+            bullet.Top = this.Top - bullet.Height;
+            game.Controls.Add(bullet);            
         }
 
     }

@@ -22,16 +22,32 @@ namespace SpaceInvaders2020
 
         private void InitializeGame()
         {
+            this.KeyDown += Game_KeyDown;
             this.BackColor = Color.Black;
             AddSpaceshipToGame();
         }
 
+        private void Game_KeyDown1(object sender, KeyEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         private void AddSpaceshipToGame()
         {
-            spaceship = new Spaceship();
+            spaceship = new Spaceship(this);
             spaceship.Left = this.ClientRectangle.Width / 2 - spaceship.Width / 2;
             spaceship.Top = this.ClientRectangle.Height - spaceship.Height;
             this.Controls.Add(spaceship);
         }
+
+        private void Game_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Space)
+            {
+                spaceship.Fire();
+            }
+        }
+
+
     }
 }
