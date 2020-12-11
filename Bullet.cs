@@ -10,9 +10,13 @@ namespace SpaceInvaders2020
 {
     class Bullet : PictureBox
     {
+        int step = 2;
+        Timer timerMove = null;
+
         public Bullet()
         {
             InitializeBullet();
+            InitializeTimerMove();
         }
 
         private void InitializeBullet()
@@ -22,5 +26,17 @@ namespace SpaceInvaders2020
             this.Width = 2;
         }
 
+        private void InitializeTimerMove()
+        {
+            timerMove = new Timer();
+            timerMove.Tick += TimerMove_Tick;
+            timerMove.Interval = 10;
+            timerMove.Start();
+        }
+
+        private void TimerMove_Tick(object sender, EventArgs e)
+        {
+            this.Top -= step;
+        }
     }
 }

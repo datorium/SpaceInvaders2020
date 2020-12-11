@@ -47,7 +47,5 @@ namespace SpaceInvaders2020
                 spaceship.Fire();
             }
         }
-
-
     }
 }
