@@ -67,8 +67,21 @@ namespace SpaceInvaders2020
         }
 
         private void TimerMove_Tick(object sender, EventArgs e)
+        {            
+            this.Left += this.HorVelocity;
+            CheckSpaceshipLocation();
+        }
+
+        private void CheckSpaceshipLocation()
         {
-              this.Left += this.HorVelocity;
+            if(this.Left <= 0)
+            {
+                this.HorVelocity = 0;
+            }
+            else if(this.Left + this.Width >= game.ClientRectangle.Width)
+            {
+                this.HorVelocity = 0;
+            }
         }
 
     }
