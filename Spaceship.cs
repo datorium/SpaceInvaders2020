@@ -22,5 +22,10 @@ namespace SpaceInvaders2020
             this.BackColor = Color.SteelBlue;
         }
 
+        public void SomeFunction()
+        {
+
+        }
+
     }
 }
