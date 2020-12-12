@@ -27,7 +27,7 @@ namespace SpaceInvaders2020
 
             this.BackColor = Color.Black;
             
-            spaceship = new Spaceship();
+            spaceship = new Spaceship(this);
             this.Controls.Add(spaceship);
             spaceship.Left = 150;
             spaceship.Top = ClientRectangle.Height - spaceship.Height;       
@@ -38,16 +38,8 @@ namespace SpaceInvaders2020
         {
             if(e.KeyCode == Keys.Space)
             {
-                FireBullet();
+                spaceship.Fire();
             }
-        }
-
-        private void FireBullet()
-        {
-            bullet = new Bullet();
-            bullet.Left = spaceship.Left + 30;
-            bullet.Top = spaceship.Top - bullet.Height;
-            this.Controls.Add(bullet);
         }
     }
 }
