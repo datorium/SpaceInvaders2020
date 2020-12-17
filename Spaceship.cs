@@ -10,10 +10,10 @@ namespace SpaceInvaders2020
 {
     class Spaceship : PictureBox
     {
-        public int Step { get; set; } = 2;   
+        public int Step { get; set; } = 2;
+        public int FireCooldown { get; set; } = 1000;
        
-        private int horVelocity = 0;
-        private int fireCooldown = 1000;
+        private int horVelocity = 0;  
         private bool canFire = true;
 
         private Form game = null;
@@ -50,7 +50,7 @@ namespace SpaceInvaders2020
         {
             timerFireCooldown = new Timer();
             timerFireCooldown.Tick += TimerFireCooldown_Tick;
-            timerFireCooldown.Interval = fireCooldown;
+            timerFireCooldown.Interval = this.FireCooldown;
             timerFireCooldown.Start();
         }
 
@@ -71,6 +71,7 @@ namespace SpaceInvaders2020
         private void TimerMove_Tick(object sender, EventArgs e)
         {
             this.Left += horVelocity;
+            CheckBorderCollision();
         }
 
         public void MoveLeft()
@@ -86,6 +87,18 @@ namespace SpaceInvaders2020
         public void Stop()
         {
             horVelocity = 0;
+        }
+
+        private void CheckBorderCollision()
+        {
+            if(this.Left + this.Width < 0)
+            {
+                this.Left = game.ClientRectangle.Width;
+            }
+            else if(this.Left > game.ClientRectangle.Width)
+            {
+                this.Left = 0 - this.Width;
+            }
         }
 
     }

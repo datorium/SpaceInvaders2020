@@ -30,6 +30,7 @@ namespace SpaceInvaders2020
         private void AddSpaceshipToGame()
         {
             spaceship = new Spaceship(this);
+            spaceship.FireCooldown = 500;
             spaceship.Left = this.ClientRectangle.Width / 2 - spaceship.Width / 2;
             spaceship.Top = this.ClientRectangle.Height - spaceship.Height;
             this.Controls.Add(spaceship);
