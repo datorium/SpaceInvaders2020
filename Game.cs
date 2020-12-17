@@ -27,11 +27,6 @@ namespace SpaceInvaders2020
             AddSpaceshipToGame();
         }
 
-        private void Game_KeyDown1(object sender, KeyEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         private void AddSpaceshipToGame()
         {
             spaceship = new Spaceship(this);
@@ -45,6 +40,18 @@ namespace SpaceInvaders2020
             if(e.KeyCode == Keys.Space)
             {
                 spaceship.Fire();
+            }
+            else if(e.KeyCode == Keys.A)
+            {
+                spaceship.MoveLeft();
+            }
+            else if (e.KeyCode == Keys.D)
+            {
+                spaceship.MoveRight();
+            }
+            else if (e.KeyCode == Keys.S)
+            {
+                spaceship.Stop();
             }
         }
     }

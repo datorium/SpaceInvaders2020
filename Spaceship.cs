@@ -10,17 +10,21 @@ namespace SpaceInvaders2020
 {
     class Spaceship : PictureBox
     {
+        public int Step { get; set; } = 2;   
+       
+        private int horVelocity = 0;
+        private int fireCooldown = 1000;
+        private bool canFire = true;
 
-        int fireCooldown = 1000;
-        bool canFire = true;
-        
-        Form game = null;
-        Timer timerFireCooldown = null;
+        private Form game = null;
+        private Timer timerFireCooldown = null;
+        private Timer timerMove = null;
 
         public Spaceship(Form form)
         {
             InitializeSpaceship();
             game = form;
+            InitializeTimerMove();            
         }
 
         private void InitializeSpaceship()
@@ -54,6 +58,34 @@ namespace SpaceInvaders2020
         {
             canFire = true;
             timerFireCooldown.Stop();
+        }
+
+        private void InitializeTimerMove()
+        {
+            timerMove = new Timer();
+            timerMove.Tick += TimerMove_Tick;
+            timerMove.Interval = 10;
+            timerMove.Start();
+        }
+
+        private void TimerMove_Tick(object sender, EventArgs e)
+        {
+            this.Left += horVelocity;
+        }
+
+        public void MoveLeft()
+        {
+            horVelocity = -this.Step;
+        }
+
+        public void MoveRight()
+        {
+            horVelocity = this.Step;
+        }
+
+        public void Stop()
+        {
+            horVelocity = 0;
         }
 
     }
