@@ -12,7 +12,14 @@ namespace SpaceInvaders2020
     {
         public Enemy()
         {
+            InitializeEnemy();
+        }
 
+        private void InitializeEnemy()
+        {
+            this.BackColor = Color.Red;
+            this.Width = 60;
+            this.Height = 60;
         }
     }
 }
