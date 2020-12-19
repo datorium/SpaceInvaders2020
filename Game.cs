@@ -13,6 +13,7 @@ namespace SpaceInvaders2020
     public partial class Game : Form
     {
         Spaceship spaceship = null;
+        List<Enemy> enemies = new List<Enemy>();
 
         public Game()
         {
@@ -25,6 +26,7 @@ namespace SpaceInvaders2020
             this.KeyDown += Game_KeyDown;
             this.BackColor = Color.Black;
             AddSpaceshipToGame();
+            AddEnemiesToGame();
         }
 
         private void AddSpaceshipToGame()
@@ -34,6 +36,19 @@ namespace SpaceInvaders2020
             spaceship.Left = this.ClientRectangle.Width / 2 - spaceship.Width / 2;
             spaceship.Top = this.ClientRectangle.Height - spaceship.Height;
             this.Controls.Add(spaceship);
+        }
+
+        private void AddEnemiesToGame()
+        {
+            Enemy enemy;
+            for(int i = 0; i < 5; i++)
+            {
+                enemy = new Enemy();
+                enemy.Top = 100;
+                enemy.Left = 80 * i;
+                enemies.Add(enemy);
+                this.Controls.Add(enemy);
+            }
         }
 
         private void Game_KeyDown(object sender, KeyEventArgs e)
