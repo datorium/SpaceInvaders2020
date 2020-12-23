@@ -12,7 +12,10 @@ namespace SpaceInvaders2020
     {
         public int Step { get; set; } = 2;
         public int FireCooldown { get; set; } = 1000;
-       
+
+        public List<Bullet> bullets = new List<Bullet>();
+
+
         private int horVelocity = 0;  
         private bool canFire = true;
 
@@ -41,7 +44,8 @@ namespace SpaceInvaders2020
             Bullet bullet = new Bullet();
             bullet.Left = this.Left + this.Width / 2;
             bullet.Top = this.Top - bullet.Height;
-            game.Controls.Add(bullet);            
+            game.Controls.Add(bullet);
+            bullets.Add(bullet);
             canFire = false;
             InitializeTimerFireCooldown();
         }

@@ -12,8 +12,8 @@ namespace SpaceInvaders2020
 {
     public partial class Game : Form
     {
-        Spaceship spaceship = null;
-        List<Enemy> enemies = new List<Enemy>();
+        private Spaceship spaceship = null;
+        private List<Enemy> enemies = new List<Enemy>();
 
         public Game()
         {
@@ -74,12 +74,9 @@ namespace SpaceInvaders2020
             }
         }
 
-
-        private void BulletEnemyColiisionDetection()
+        private void BulletEnemyCollisionDetection()
         {
             //if collision then remove both the bullet and enemy
         }
-
-
     }
 }
