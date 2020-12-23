@@ -26,7 +26,7 @@ namespace SpaceInvaders2020
             this.KeyDown += Game_KeyDown;
             this.BackColor = Color.Black;
             AddSpaceshipToGame();
-            AddEnemiesToGame();
+            AddEnemiesToGame(6, 15);
         }
 
         private void AddSpaceshipToGame()
@@ -38,16 +38,19 @@ namespace SpaceInvaders2020
             this.Controls.Add(spaceship);
         }
 
-        private void AddEnemiesToGame()
+        private void AddEnemiesToGame(int rows, int cols)
         {
             Enemy enemy;
-            for(int i = 0; i < 5; i++)
+            for(int rowCounter = 0; rowCounter < rows; rowCounter++)
             {
-                enemy = new Enemy();
-                enemy.Top = 100;
-                enemy.Left = 80 * i;
-                enemies.Add(enemy);
-                this.Controls.Add(enemy);
+                for (int colCounter = 0; colCounter < cols; colCounter++)
+                {
+                    enemy = new Enemy();
+                    enemy.Top = 100 + 40 * rowCounter;
+                    enemy.Left = 100 + 40 * colCounter;
+                    enemies.Add(enemy);
+                    this.Controls.Add(enemy);
+                }
             }
         }
 
@@ -70,5 +73,13 @@ namespace SpaceInvaders2020
                 spaceship.Stop();
             }
         }
+
+
+        private void BulletEnemyColiisionDetection()
+        {
+            //if collision then remove both the bullet and enemy
+        }
+
+
     }
 }
