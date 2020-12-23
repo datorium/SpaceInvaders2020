@@ -18,8 +18,8 @@ namespace SpaceInvaders2020
         private void InitializeEnemy()
         {
             this.BackColor = Color.Red;
-            this.Width = 60;
-            this.Height = 60;
+            this.Width = 40;
+            this.Height = 40;
         }
     }
 }
