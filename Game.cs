@@ -14,11 +14,13 @@ namespace SpaceInvaders2020
     {
         private Spaceship spaceship = null;
         private List<Enemy> enemies = new List<Enemy>();
+        private Timer timerMain = null;
 
         public Game()
         {
             InitializeComponent();
             InitializeGame();
+            InitializeTimerMain();
         }
 
         private void InitializeGame()
@@ -76,7 +78,45 @@ namespace SpaceInvaders2020
 
         private void BulletEnemyCollisionDetection()
         {
-            //if collision then remove both the bullet and enemy
+            //for(int b = 0; b < spaceship.bullets.Count; b++)
+            //{
+            //    for(int e = 0; e < enemies.Count; e++)
+            //    {
+            //        if (spaceship.bullets[b].Bounds.IntersectsWith(enemies[e].Bounds))
+            //        {
+            //            //collision detected
+            //            //bullet.Dispose();
+            //            //enemy.Dispose();
+            //        }
+            //    }
+            //}            
+            
+            foreach(var bullet in spaceship.bullets)
+            {
+                foreach(var enemy in enemies)
+                {
+                    if (bullet.Bounds.IntersectsWith(enemy.Bounds))
+                    {
+                        //collision detected
+                        bullet.Dispose();
+                        enemy.Dispose();
+                    }
+                }
+            }
+
+        }
+
+        private void InitializeTimerMain()
+        {
+            timerMain = new Timer();
+            timerMain.Interval = 10;
+            timerMain.Tick += TimerMain_Tick;
+            timerMain.Start();
+        }
+
+        private void TimerMain_Tick(object sender, EventArgs e)
+        {
+            BulletEnemyCollisionDetection();
         }
     }
 }
