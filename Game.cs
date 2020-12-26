@@ -98,13 +98,12 @@ namespace SpaceInvaders2020
                 {
                     if (bullet.Bounds.IntersectsWith(enemy.Bounds))
                     {
-                        this.Controls.Remove(enemy);
-                        enemy.Dispose();
+                        enemy.Explode();
+
                         this.Controls.Remove(bullet);
                         bullet.Dispose();
 
-                        //this is a temporary solution
-                        enemy.Top = 0;
+                        //this is a temporary solution                        
                         bullet.Top = 0;
                     }
                 }
