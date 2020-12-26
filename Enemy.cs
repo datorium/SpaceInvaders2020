@@ -21,5 +21,12 @@ namespace SpaceInvaders2020
             this.Width = 40;
             this.Height = 40;
         }
+
+        public void Explode()
+        {
+
+        }
+
+
     }
 }
