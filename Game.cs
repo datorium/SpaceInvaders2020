@@ -28,7 +28,7 @@ namespace SpaceInvaders2020
             this.KeyDown += Game_KeyDown;
             this.BackColor = Color.Black;
             AddSpaceshipToGame();
-            AddEnemyToGame(5, 10);
+            AddEnemyToGame(3, 3);
         }
 
         private void AddSpaceshipToGame()
@@ -48,7 +48,7 @@ namespace SpaceInvaders2020
             {
                 for (int colCounter = 0; colCounter < columns; colCounter++)
                 {
-                    enemy = new Enemy();
+                    enemy = new Enemy(this);
                     enemy.Left = 20 + 60 * colCounter;
                     enemy.Top = 20 + 60 * rowCounter;
                     this.Controls.Add(enemy);

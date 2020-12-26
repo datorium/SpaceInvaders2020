@@ -14,10 +14,11 @@ namespace SpaceInvaders2020
         private int imageExplosionCount = 0;
 
         private Timer timerAnimateExplosion = null;
+        private Game game = null;
 
-
-        public Enemy()
+        public Enemy(Game gameForm)
         {
+            game = gameForm;
             InitializeEnemy();
         }
 
@@ -59,6 +60,7 @@ namespace SpaceInvaders2020
                 timerAnimateExplosion.Stop();
                 timerAnimateExplosion.Dispose();
                 this.Top = 0;
+                game.Controls.Remove(this);
                 this.Dispose();
             }
         }
